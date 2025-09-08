@@ -801,7 +801,7 @@
       let val = urlInput.value.trim();
       if (!val) return;
       if (!val.startsWith('http://') && !val.startsWith('https://') && !val.startsWith('nebuli://') && !val.startsWith('/')) {
-        val = '/NebuliOS/p/ultraviolet/embed.html#https://duckduckgo.com/?q=' + encodeURIComponent(val);
+        val = '/p/ultraviolet/embed.html#https://duckduckgo.com/?q=' + encodeURIComponent(val);
       }
       const id = currentTabId();
       if (id) navigate(id, val);
@@ -809,7 +809,7 @@
   });
 
   newTabBtn.addEventListener('click', () => {
-    addTab('/NebuliOS/search.html', 'New Tab', 'nebuli://search');
+    addTab('/search.html', 'New Tab', 'nebuli://search');
     if (wrapper.style.display === 'none') {
       wrapper.style.display = 'flex';
       minimizeBubble.style.display = 'none';
@@ -822,7 +822,7 @@
   const moreBtn = document.getElementById('moreBtn');
 
   browserBtn.addEventListener('click', () => {
-    addTab('/NebuliOS/search.html', 'New Tab', 'nebuli://search');
+    addTab('/search.html', 'New Tab', 'nebuli://search');
     if (wrapper.style.display === 'none') {
       wrapper.style.display = 'flex';
       minimizeBubble.style.display = 'none';
@@ -830,7 +830,7 @@
   });
 
   gamesBtn.addEventListener('click', () => {
-    addTab('/NebuliOS/games.html', 'Games', 'nebuli://games');
+    addTab('/games.html', 'Games', 'nebuli://games');
     if (wrapper.style.display === 'none') {
       wrapper.style.display = 'flex';
       minimizeBubble.style.display = 'none';
@@ -838,7 +838,7 @@
   });
 
   toolsBtn.addEventListener('click', () => {
-    addTab('/NebuliOS/tools.html', 'Tools', 'nebuli://tools');
+    addTab('/tools.html', 'Tools', 'nebuli://tools');
     if (wrapper.style.display === 'none') {
       wrapper.style.display = 'flex';
       minimizeBubble.style.display = 'none';
@@ -846,7 +846,7 @@
   });
 
   moreBtn.addEventListener('click', () => {
-    addTab('/NebuliOS/more.html', 'More', 'nebuli://more');
+    addTab('/more.html', 'More', 'nebuli://more');
     if (wrapper.style.display === 'none') {
       wrapper.style.display = 'flex';
       minimizeBubble.style.display = 'none';
