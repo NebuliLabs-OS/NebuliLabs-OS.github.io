@@ -1,7 +1,7 @@
 /**
  * Distributed with Ultraviolet and compatible with most configurations.
  */
-const stockSW = "/NebuliOS/p/ultraviolet/uv-sw.js";
+const stockSW = "/p/ultraviolet/uv-sw.js";
 
 /**
  * List of hostnames that are allowed to run serviceworkers on http:
