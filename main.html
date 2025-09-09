@@ -796,17 +796,39 @@
   forwardBtn.addEventListener('click', () => goForward());
   reloadBtn.addEventListener('click', () => reload());
 
-  urlInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      let val = urlInput.value.trim();
-      if (!val) return;
-      if (!val.startsWith('http://') && !val.startsWith('https://') && !val.startsWith('nebuli://') && !val.startsWith('/')) {
-        val = '/p/ultraviolet/embed.html#https://duckduckgo.com/?q=' + encodeURIComponent(val);
+urlInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    let val = urlInput.value.trim();
+    if (!val) return;
+
+    let realUrl;
+    let displayUrl = 'nebuli://web';
+
+
+    if (val.startsWith('http://') || val.startsWith('https://')) {
+      realUrl = `/NebuliOS/p/ultraviolet/embed.html#${val}`;
+    } 
+
+    else if (val.startsWith('nebuli://') || val.startsWith('/')) {
+      realUrl = val;
+      displayUrl = val;
+    } 
+
+    else {
+      if (!val.includes('.') && !val.includes(' ')) {
+        realUrl = `/p/ultraviolet/embed.html#https://${val}`;
+      } else {
+        realUrl = `/p/ultraviolet/embed.html#https://duckduckgo.com/?q=${encodeURIComponent(val)}`;
       }
-      const id = currentTabId();
-      if (id) navigate(id, val);
     }
-  });
+
+    const id = currentTabId();
+    if (id) {
+      navigate(id, realUrl);
+      urlInput.value = displayUrl;
+    }
+  }
+});
 
   newTabBtn.addEventListener('click', () => {
     addTab('/search.html', 'New Tab', 'nebuli://search');
