@@ -16,6 +16,7 @@
       min-height: 100vh;
       gap: 2rem;
       padding: 1.5rem;
+      text-align: center;
     }
     h1 {
       font-size: 4rem;
@@ -25,16 +26,17 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shimmer 6s linear infinite;
-      text-align: center;
     }
     @keyframes shimmer {
       0%   { background-position: 0% 50%; }
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .search-box {
-      width: 90%;
+      width: 100%;
       max-width: 500px;
+      margin: 0 auto;
     }
     .search-box input {
       width: 100%;
@@ -43,12 +45,16 @@
       border-radius: 50px;
       font-size: 1.1rem;
       outline: none;
+      text-align: center;
     }
+
     .quick-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
     }
     .quick-links a {
       text-decoration: none;
@@ -67,9 +73,11 @@
 </head>
 <body>
   <h1>NebuliOS</h1>
+
   <form class="search-box" onsubmit="doSearch(event)">
     <input id="query" type="text" placeholder="Search with DuckDuckGo…" />
   </form>
+
   <div class="quick-links">
     <a href="/p/ultraviolet/embed.html#https://www.google.com">Google</a>
     <a href="/p/ultraviolet/embed.html#https://youtube.com">YouTube</a>
@@ -77,13 +85,13 @@
     <a href="/p/ultraviolet/embed.html#https://discord.com/app">Discord</a>
     <a href="/p/ultraviolet/embed.html#https://open.spotify.com">Spotify</a>
   </div>
+
   <script>
     function doSearch(e) {
       e.preventDefault();
       const q = document.getElementById("query").value.trim();
       if (q) {
-        const duckUrl  = "duckduckgo.com/?q=" + q;
-        const embedUrl = "/p/ultraviolet/embed.html#https://duckduckgo.com/?=" + duckUrl;
+        const embedUrl = "/p/ultraviolet/embed.html#https://duckduckgo.com/?q=" + encodeURIComponent(q);
         window.location.href = embedUrl;
       }
     }
