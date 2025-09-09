@@ -73,17 +73,17 @@
 </head>
 <body>
   <h1>NebuliOS</h1>
-
+ 
   <form class="search-box" onsubmit="doSearch(event)">
     <input id="query" type="text" placeholder="Search with DuckDuckGo…" />
   </form>
 
   <div class="quick-links">
-    <a href="/p/ultraviolet/embed.html#https://www.google.com">Google</a>
-    <a href="/p/ultraviolet/embed.html#https://youtube.com">YouTube</a>
-    <a href="/p/ultraviolet/embed.html#https://github.com">GitHub</a>
-    <a href="/p/ultraviolet/embed.html#https://discord.com/app">Discord</a>
-    <a href="/p/ultraviolet/embed.html#https://open.spotify.com">Spotify</a>
+    <a href="/NebuliOS/p/ultraviolet/embed.html#https://www.google.com">Google</a>
+    <a href="/NebuliOS/p/ultraviolet/embed.html#https://youtube.com">YouTube</a>
+    <a href="/NebuliOS/p/ultraviolet/embed.html#https://github.com">GitHub</a>
+    <a href="/NebuliOS/p/ultraviolet/embed.html#https://discord.com/app">Discord</a>
+    <p>NebuliOS Tip: use ctrl +/- & fullscreen for the best experience
   </div>
 
   <script>
@@ -91,7 +91,7 @@
       e.preventDefault();
       const q = document.getElementById("query").value.trim();
       if (q) {
-        const embedUrl = "/p/ultraviolet/embed.html#https://duckduckgo.com/?q=" + encodeURIComponent(q);
+        const embedUrl = "/NebuliOS/p/ultraviolet/embed.html#https://duckduckgo.com/?q=" + encodeURIComponent(q);
         window.location.href = embedUrl;
       }
     }
