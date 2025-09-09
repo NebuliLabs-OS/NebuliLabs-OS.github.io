@@ -71,11 +71,11 @@
     <input id="query" type="text" placeholder="Search with DuckDuckGo…" />
   </form>
   <div class="quick-links">
-    <a href="/NebuliOS/p/ultraviolet/embed.html#https://www.google.com">Google</a>
-    <a href="/NebuliOS/p/ultraviolet/embed.html#https://youtube.com">YouTube</a>
-    <a href="/NebuliOS/p/ultraviolet/embed.html#https://github.com">GitHub</a>
-    <a href="/NebuliOS/p/ultraviolet/embed.html#https://discord.com/app">Discord</a>
-    <a href="/NebuliOS/p/ultraviolet/embed.html#https://open.spotify.com">Spotify</a>
+    <a href="/p/ultraviolet/embed.html#https://www.google.com">Google</a>
+    <a href="/p/ultraviolet/embed.html#https://youtube.com">YouTube</a>
+    <a href="/p/ultraviolet/embed.html#https://github.com">GitHub</a>
+    <a href="/p/ultraviolet/embed.html#https://discord.com/app">Discord</a>
+    <a href="/p/ultraviolet/embed.html#https://open.spotify.com">Spotify</a>
   </div>
   <script>
     function doSearch(e) {
@@ -83,7 +83,7 @@
       const q = document.getElementById("query").value.trim();
       if (q) {
         const duckUrl  = "duckduckgo.com/?q=" + q;
-        const embedUrl = "/NebuliOS/p/ultraviolet/embed.html#https://duckduckgo.com/?=" + duckUrl;
+        const embedUrl = "/p/ultraviolet/embed.html#https://duckduckgo.com/?=" + duckUrl;
         window.location.href = embedUrl;
       }
     }
