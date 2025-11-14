@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,11 +8,52 @@
     body {
       font-family: Arial, sans-serif;
       background: #f0f0f0;
+      margin: 0;
       padding: 20px;
+    }
+
+    #search-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    #search {
+      width: 50%;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    #search:focus {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .divider {
+      height: 1px;
+      background: #ccc;
+      margin: 30px 0;
+      border-radius: 1px;
+    }
+
+    .games-section {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       grid-gap: 15px;
     }
+
     .game {
       position: relative;
       width: 160px;
@@ -20,7 +61,11 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+      transition: transform 0.2s;
     }
+
+    .game:hover { transform: translateY(-3px); }
+
     .game img {
       position: absolute;
       top: 0; left: 0;
@@ -28,6 +73,7 @@
       object-fit: cover;
       z-index: 1;
     }
+
     .game a {
       position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
@@ -36,89 +82,123 @@
       text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
       z-index: 2;
     }
+
     .game a:hover { background: rgba(0,0,0,0.35); }
   </style>
 </head>
 <body>
 
+  <div id="search-container">
+    <input type="text" id="search" placeholder="Search for a game...">
+  </div>
+
+    <div class="games-section" id="suggest">
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="1">
+    <img src="https://agpartseducation.com/wp-content/uploads/2020/10/google-forms-hacks.png" alt="1">
+    <a href="https://forms.gle/VtryJUW3e5zqvru27">Suggest Games</a>
+  </div>
+</div>
+  
+    <div class="divider"></div>
+  
+  <h2>Luna (CloudMoon)</h2>
+  <div class="games-section" id="luna">
+    <div class="game">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Roblox_Corporation_2025_logo.svg/2048px-Roblox_Corporation_2025_logo.svg.png" alt="Roblox">
+      <a href="/g/app-luna.html">Roblox</a>
+    </div>
+    <div class="game">
+      <img src="https://play-lh.googleusercontent.com/gnSC6s8-6Tjc4uhvDW7nfrSJxpbhllzYhgX8y374N1LYvWBStn2YhozS9XXaz1T_Pi2q" alt="Clash Royale">
+      <a href="/g/app-luna.html">Clash Royale</a>
+    </div>
+            <div class="game">
+      <img src="https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/25330481/Fortnite_Myths___Monsters_cover.png" alt="Fortnite">
+      <a href="/g/app-luna.html">Fortnite</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  
+  <h2>Ultimate Game Stash Games</h2>
+  <div class="games-section" id="ugs-games">
+  <div class="game">
+    <img src="https://www.coolmathgames.com/sites/default/files/2048_OG-logo.jpg" alt="1">
     <a href="/g/cl1.html">1</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="1on1soccer">
-    <a href="/g/cl1on1soccer.html">1on 1soccer</a>
+    <img src="https://tcf.admeen.org/game/4000/3689/400x246/1-on-1-soccer.webp" alt="1on1soccer">
+    <a href="/g/cl1on1soccer.html">1 On 1 Soccer</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="1on1tennis">
-    <a href="/g/cl1on1tennis.html">1on1tennis</a>
+    <img src="https://igre.games/wp-content/uploads/thumbs/custom/0-9/1-On-1-Tennis.jpg" alt="1on1tennis">
+    <a href="/g/cl1on1tennis.html">1 On 1 Tennis</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="1v1lol">
-    <a href="/g/cl1v1lol.html">1v1lol</a>
+    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2305790/capsule_616x353.jpg?t=1756722433" alt="1v1lol">
+    <a href="/g/cl1v1lol.html">1v1.lol</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="2doom">
-    <a href="/g/cl2doom.html">2doom</a>
+    <img src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000018925/1892afd16e56eaedb6a3d73ef6d936c4f24e3f40bd17a541d360c1a47e564f83" alt="2doom">
+    <a href="/g/cl2doom.html">Doom 2</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="2Dshooting">
-    <a href="/g/cl2Dshooting.html">2Dshooting</a>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsaDM8YsYcUuaURmP-Wg2krJVDovA84I7tQ&s" alt="2Dshooting">
+    <a href="/g/cl2Dshooting.html">2D shooting</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="3dash">
+    <img src="https://avatars.mds.yandex.net/get-vh/3889552/2a0000018feac835892c09ed19674471cd0f/564x318_1" alt="3dash">
     <a href="/g/cl3dash.html">3dash</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="4thandgoal">
-    <a href="/g/cl4thandgoal.html">4thandgoal</a>
+    <img src="https://imgs.crazygames.com/4th-and-goal-2019-cover?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="4thandgoal">
+    <a href="/g/cl4thandgoal.html">4th and goal</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="8ballclassic">
-    <a href="/g/cl8ballclassic.html">8ballclassic</a>
+    <img src="https://img.y8.com/cloud/v2-y8-thumbs-big-thumbnails-001/101751/big.gif" alt="8ballclassic">
+    <a href="/g/cl8ballclassic.html">8 ball classic</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="8ballpool">
-    <a href="/g/cl8ballpool.html">8ballpool</a>
+    <img src="https://www.coolmathgames.com/sites/default/files/8BallPool_OG-logo.jpg" alt="8ballpool">
+    <a href="/g/cl8ballpool.html">8 ball pool</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="10bullets">
-    <a href="/g/cl10bullets.html">10bullets</a>
+    <img src="https://imgs.crazygames.com/10-more-bullets-html5?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="10bullets">
+    <a href="/g/cl10bullets.html">10 bullets</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="10minutestildawn">
-    <a href="/g/cl10minutestildawn.html">10minutestildawn</a>
+    <img src="https://images.launchbox-app.com/723d9edd-a074-4c18-af95-f05292dc2774.jpg" alt="10minutestildawn">
+    <a href="/g/cl10minutestildawn.html">10 minutes til' dawn</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="12minibattles">
-    <a href="/g/cl12minibattles.html">12minibattles</a>
+    <img src="https://imgs.crazygames.com/games/12-minibattles/cover_16x9-1707829553932.png?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="12minibattles">
+    <a href="/g/cl12minibattles.html">12 minibattles</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="40exescape">
-    <a href="/g/cl40exescape.html">40exescape</a>
+    <img src="https://www.coolmathgames.com/sites/default/files/40x-Escape.png" alt="40exescape">
+    <a href="/g/cl40exescape.html">40xEscape</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="60secondsburgerrun">
-    <a href="/g/cl60secondsburgerrun.html">60secondsburgerrun</a>
+    <img src="https://i.ytimg.com/vi/ScdEZZdBJb0/sddefault.jpg" alt="60 secondsburgerrun">
+    <a href="/g/cl60secondsburgerrun.html">60 second burger run</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="60secsantarun">
-    <a href="/g/cl60secsantarun.html">60secsantarun</a>
+    <img src="https://www.coolmathgames.com/sites/default/files/santa-run-2.jpg" alt="60secsantarun">
+    <a href="/g/cl60secsantarun.html">60 second santa run</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="99balls">
-    <a href="/g/cl99balls.html">99balls</a>
+    <img src="https://www.coolmathgames.com/sites/default/files/99-balls.jpg" alt="99balls">
+    <a href="/g/cl99balls.html">99 balls</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="2048">
+    <img src="https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="2048">
     <a href="/g/cl2048.html">2048</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="2048cupcakes">
-    <a href="/g/cl2048cupcakes.html">2048cupcakes</a>
+    <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/66b7c398c3d38a001ed2a2d2.jpg" alt="2048cupcakes">
+    <a href="/g/cl2048cupcakes.html">2048 cupcakes</a>
   </div>
   <div class="game">
-    <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="9007199254740992">
+    <img src="https://i.gyazo.com/f5d9e991b6d69724dac7ee87e4651a16.png" alt="9007199254740992">
     <a href="/g/cl9007199254740992.html">9007199254740992</a>
   </div>
   <div class="game">
@@ -3093,5 +3173,20 @@
     <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="wheely7">
     <a href="/g/clwheely7.html">wheely7</a>
   </div>
+    </div>
+
+  <script>
+    const search = document.getElementById('search');
+    const games = document.querySelectorAll('.game');
+
+    search.addEventListener('input', () => {
+      const query = search.value.toLowerCase();
+      games.forEach(game => {
+        const name = game.querySelector('a').textContent.toLowerCase();
+        game.style.display = name.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+
 </body>
 </html>
