@@ -1,7 +1,7 @@
 /**
  * Distributed with Ultraviolet and compatible with most configurations.
  */
-const stockSW = "/p/ultraviolet/uv-sw.js";
+const stockSW = "/p/scramjet/scramjet-sw.js";
 
 /**
  * List of hostnames that are allowed to run serviceworkers on http:
@@ -24,11 +24,5 @@ async function registerSW() {
 
 	// Ultraviolet has a stock `sw.js` script.
 	await navigator.serviceWorker.register(stockSW, {
-		scope: __uv$config.prefix,
 	});
-	await import("https://unpkg.com/@mercuryworkshop/bare-mux@2.1.7/dist/index.js")
-	const connection = new BareMux.BareMuxConnection("/bareworker.js");
-
-	const wispURL = "wss://wisp.rhw.one/";
-	await connection.setTransport("	https://unpkg.com/@mercuryworkshop/epoxy-transport@2.1.27/dist/index.mjs", [{ wisp: wispURL }]);
 }
