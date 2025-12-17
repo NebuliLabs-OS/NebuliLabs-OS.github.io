@@ -207,13 +207,12 @@
     </div>
 
     <div id="disclaimer">
-        Mynd AI is made by & a part of Nebuli Labs, owned by Aquanix05. AI can be incorrect or outdated. Make sure you
+        Mynd AI is made by & a part of Nebuli Labs, owned by NebuLord. AI can be incorrect or outdated. Make sure you
         test and confirm Mynd's answers.
     </div>
 
     <script>
-        // String Transformation Functions (Replaces Caesar Cipher)
-        const magicNumber = 7; // Shift value
+        const magicNumber = 7;
         function transformString(str, shift) {
             return str.split('').map(char => {
                 if (char.match(/[a-z]/i)) {
@@ -226,12 +225,11 @@
         }
 
         function reverseTransformString(str, shift) {
-            return transformString(str, 26 - shift);  // Decrypt by shifting in the opposite direction
+            return transformString(str, 26 - shift);
         }
 
-        // API Key Handling
         const initialCode = "Z3NrX085TkhuVktEZmloQ1Y4UkpoQ0FBV0dkeWIzRllzM01uaDlvQkkyQ1VNWWR4bHhQYzJldk8=";
-        const finalCode = transformString(initialCode, magicNumber); // Correctly encrypt
+        const finalCode = transformString(initialCode, magicNumber);
 
 
         const chatContainer = document.getElementById("chat-container");
@@ -265,14 +263,11 @@
         async function getGroqResponse(prompt) {
             const apiUrl = "https://api.groq.com/openai/v1/chat/completions";
 
-            // 1. Decrypt the Caesar cipher
             const base64EncodedApiKey = reverseTransformString(finalCode, magicNumber);
 
-            // 2. Decode the Base64 string
             const secretKey = atob(base64EncodedApiKey);
 
             try {
-                // REMOVED console.log STATEMENTS
                 const response = await fetch(apiUrl, {
                     method: "POST",
                     headers: {
@@ -285,7 +280,7 @@
                             "role": "user",
                             "content": prompt
                         }],
-                        "temperature": 0.7 // Adjust as needed
+                        "temperature": 0.7 
                     })
                 });
 
@@ -330,7 +325,7 @@
             const messageDiv = document.createElement("div");
             messageDiv.classList.add("user-message");
             messageDiv.textContent = message;
-            chatContainer.appendChild(messageDiv); // ADDED BACK
+            chatContainer.appendChild(messageDiv);
         }
 
         promptInput.addEventListener("keydown", function (event) {
