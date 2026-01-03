@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Astra (Cloudmoon)</title>
+
 <style>
   html, body {
     margin: 0;
@@ -37,11 +38,10 @@
     max-width: 400px;
     text-align: center;
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.3);
-    position: relative;
   }
 
   #popupContent h2 {
@@ -75,27 +75,16 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
-  iframe {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    margin: 0;
-    padding: 0;
-    display: block;
-  }
 </style>
 </head>
+
 <body>
 
 <div id="popup">
   <div id="popupContent">
     <h2>Astra (Cloudmoon)</h2>
     <p>The game/app you are trying to use is made possible with Astra, which is made possible with Cloudmoon.</p>
-    <p>You will need a pre-existing cloudmoon account with google. On your cloudmoon account, go to the account settings and set a password which you will enter as credentials for Astra.</p>
+    <p>You will need a pre-existing Cloudmoon account with Google. On your Cloudmoon account, go to account settings and set a password which you will enter as credentials for Astra.</p>
     <button id="closeBtn">Continue</button>
   </div>
 </div>
@@ -107,9 +96,7 @@
   closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
 
-    const iframe = document.createElement('iframe');
-    iframe.src = '/p/ultraviolet/embed.html#https://https://astra.pxi-fusion.com';
-    document.body.appendChild(iframe);
+    window.location.href = '/p/ultraviolet/embed.html#https://astra.pxi-fusion.com';
   });
 </script>
 
