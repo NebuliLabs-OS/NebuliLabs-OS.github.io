@@ -1,6 +1,6 @@
 self.__uv$config = {
 	prefix: "/p/ultraviolet/ultraviolet/",
-	bare: "https://frogiesarcade.win/tspmo/",
+	bare: "https://larp.foundation/tspmo/",
 	encodeUrl: Ultraviolet.codec.xor.encode,
 	decodeUrl: Ultraviolet.codec.xor.decode,
 	handler: "/p/ultraviolet/uv/uv.handler.js",
