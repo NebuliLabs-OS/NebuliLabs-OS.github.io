@@ -1,0 +1,63 @@
+
+  (function() {
+    const userInput = prompt("Please type one of the following:\n'a' = about:blank\n'b' = blob cloaking\n'ac' = about:blank & tab anchor\n'bc' = blob cloaking & tab anchor");
+    
+
+    if (!userInput) return;
+
+    const getIframeContent = (addConfirmation) => {
+      const domain = window.location.origin;
+      const targetUrl = "/main.html";
+      let confirmationScript = "";
+
+      if (addConfirmation) {
+        confirmationScript = `
+          <script>
+            window.onbeforeunload = function() {
+              return "Are you sure you want to leave?";
+            };
+          <\/script>
+        `;
+      }
+
+      return `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <title>New Tab</title>
+          <style>
+            html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+            iframe { width: 100%; height: 100%; border: none; }
+          </style>
+          ${confirmationScript}
+        </head>
+        <body>
+          <iframe src="${targetUrl}" title="Main Content"></iframe>
+        </body>
+        </html>
+      `;
+    };
+
+    if (userInput === "a" || userInput === "ac") {
+      const isAC = userInput === "ac";
+      const newWin = window.open('', '_blank');
+      if (newWin) {
+        newWin.document.write(getIframeContent(isAC));
+        newWin.document.close();
+        setTimeout(function() {
+          window.close();
+        }, 500);
+      } else {
+        alert('Popup blocked! Please allow popups for this site, then reload the site.');
+      }
+    } else if (userInput === "b" || userInput === "bc") {
+      const isBC = userInput === "bc";
+      const blobContent = getIframeContent(isBC);
+      const blob = new Blob([blobContent], { type: "text/html" });
+      const blobUrl = URL.createObjectURL(blob);
+      const newTab = window.open(blobUrl, "_blank");
+      if (!newTab) {
+        alert('Popup blocked! Please allow popups for this site, then reload the site.');
+      }
+    }
+  })();
