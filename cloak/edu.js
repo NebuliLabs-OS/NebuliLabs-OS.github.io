@@ -7,7 +7,6 @@
 
     const getIframeContent = (addConfirmation) => {
       const domain = window.location.origin;
-      const targetUrl = "/main.html";
       let confirmationScript = "";
 
       if (addConfirmation) {
@@ -32,7 +31,7 @@
           ${confirmationScript}
         </head>
         <body>
-          <iframe src="${targetUrl}" title="Main Content"></iframe>
+          <iframe src="/main.html" title="Main Content"></iframe>
         </body>
         </html>
       `;
