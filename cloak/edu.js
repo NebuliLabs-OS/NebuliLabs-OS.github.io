@@ -1,25 +1,23 @@
-
-  (function() {
+(function() {
     const userInput = prompt("Please type one of the following:\n'a' = about:blank\n'b' = blob cloaking\n'ac' = about:blank & tab anchor\n'bc' = blob cloaking & tab anchor");
-    
 
     if (!userInput) return;
 
     const getIframeContent = (addConfirmation) => {
-      const domain = window.location.origin;
-      let confirmationScript = "";
+        const fullOrigin = window.location.origin;
+        let confirmationScript = "";
 
-      if (addConfirmation) {
-        confirmationScript = `
+        if (addConfirmation) {
+            confirmationScript = `
           <script>
             window.onbeforeunload = function() {
               return "Are you sure you want to leave?";
             };
           <\/script>
         `;
-      }
+        }
 
-      return `
+        return `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -31,32 +29,34 @@
           ${confirmationScript}
         </head>
         <body>
-          <iframe src="/main.html" title="Main Content"></iframe>
+          <iframe src="${fullOrigin}/main.html" title="Main Content"></iframe>
         </body>
         </html>
       `;
     };
 
     if (userInput === "a" || userInput === "ac") {
-      const isAC = userInput === "ac";
-      const newWin = window.open('', '_blank');
-      if (newWin) {
-        newWin.document.write(getIframeContent(isAC));
-        newWin.document.close();
-        setTimeout(function() {
-          window.close();
-        }, 500);
-      } else {
-        alert('Popup blocked! Please allow popups for this site, then reload the site.');
-      }
+        const isAC = userInput === "ac";
+        const newWin = window.open('', '_blank');
+        if (newWin) {
+            newWin.document.write(getIframeContent(isAC));
+            newWin.document.close();
+            setTimeout(function() {
+                window.close();
+            }, 500);
+        } else {
+            alert('Popup blocked! Please allow popups for this site, then reload the site.');
+        }
     } else if (userInput === "b" || userInput === "bc") {
-      const isBC = userInput === "bc";
-      const blobContent = getIframeContent(isBC);
-      const blob = new Blob([blobContent], { type: "text/html" });
-      const blobUrl = URL.createObjectURL(blob);
-      const newTab = window.open(blobUrl, "_blank");
-      if (!newTab) {
-        alert('Popup blocked! Please allow popups for this site, then reload the site.');
-      }
+        const isBC = userInput === "bc";
+        const blobContent = getIframeContent(isBC);
+        const blob = new Blob([blobContent], {
+            type: "text/html"
+        });
+        const blobUrl = URL.createObjectURL(blob);
+        const newTab = window.open(blobUrl, "_blank");
+        if (!newTab) {
+            alert('Popup blocked! Please allow popups for this site, then reload the site.');
+        }
     }
-  })();
+})();
