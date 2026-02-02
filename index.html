@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (analytics) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D5DPFL81S"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,363 +9,213 @@
 
   gtag('config', 'G-2D5DPFL81S');
 </script>
+  <meta charset="UTF-8">
+  <title>Riverview Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eduwork</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
-    display: flex;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 1rem;
-    transition: width 0.3s ease;
-    z-index: 10;
-  }
-  #sidebar:hover { width: 160px; }
-
-  #sidebar li {
-    list-style: none;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 10px;
-    background: #ffdd59;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s ease;
-    white-space: nowrap;
-  }
-  #sidebar li i {
-    flex-shrink: 0;
-    width: 24px;
-    text-align: center;
-    font-style: normal;
-  }
-  #sidebar li span {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  #sidebar:hover li span {
-    opacity: 1;
-  }
-  #sidebar li:hover { background: #ffc107; }
-
-  .search-bar {
-    position: fixed;
-    top: 0;
-    left: 60px;
-    width: calc(100% - 60px);
-    background: rgba(0,0,0,0.8);
-    padding: 10px;
-    display: flex;
-    z-index: 20;
-    gap: 0;
-    transition: left 0.3s ease, width 0.3s ease;
-  }
-  #sidebar:hover ~ #main .search-bar {
-    left: 160px;
-    width: calc(100% - 160px);
-  }
-  .search-bar select {
-    width: 120px;
-    padding: 10px;
-    border-radius: 10px 0 0 10px;
-    border: 2px solid rgba(255,255,255,0.3);
-    background: #222;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    flex-shrink: 0;
-  }
-  .search-bar input {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-left: none;
-    outline: none;
-    color: #000;
-    background: #fff;
-  }
-  .search-bar button {
-    border-radius: 0 10px 10px 0;
-    padding: 10px 20px;
-    background: #ffdd59;
-    color: #222;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  .search-bar button:hover { background: #ffc107; }
-
-  #main {
-    margin-left: 60px;
-    padding: 80px 2rem 2rem;
-    width: calc(100% - 60px);
-    transition: margin-left 0.3s ease, width 0.3s ease;
-  }
-  #sidebar:hover + #main {
-    margin-left: 160px;
-    width: calc(100% - 160px);
-  }
-
-  #home {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto auto;
-    gap: 1.5rem;
-  }
-
-  .card {
-    background: rgba(255,255,255,0.95);
-    color: #111;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-  }
-  .card h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #333;
-  }
-
-  .card input[type="text"] {
-    width: 100%;
-    padding: 0.7rem 0.9rem;
-    margin-bottom: 0.8rem;
-    border-radius: 10px;
-    border: 2px solid rgba(0,0,0,0.2);
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.2s, box-shadow 0.2s;
-  }
-  .card input[type="text"]:focus {
-    border: 2px solid #6a11cb;
-    box-shadow: 0 0 6px #6a11cb;
-  }
-  .main-btn {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    background: #ffdd59;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .main-btn:hover { background:#ffc107; }
-
-  #calc-result { margin-top: 1rem; font-weight: bold; text-align: center; }
-
-  #games {
-    display: none;
-    gap: 1.5rem;
-  }
-  #games .card {
-    background: #ffdd59;
-    color: #222;
-    text-align: center;
-    font-weight: bold;
-  }
-  #games .card a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    margin-top: 10px;
-  }
-
-  @media (max-width: 900px){
-    #home { display:flex; flex-direction:column; }
-    #main { margin-left:50px; width: calc(100% - 50px); padding-top:80px; }
-    #sidebar { width:50px; }
-    #sidebar:hover { width:140px; }
-    .search-bar { left:50px; width:calc(100% - 50px); }
-    #sidebar:hover ~ #main .search-bar {
-      left:140px; width:calc(100% - 140px);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      display: none;
     }
-  }
-</style>
+
+    body {
+      background-color: #f2f4f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #1f3c88;
+      color: white;
+      padding: 25px 40px;
+    }
+
+    header h1 {
+      font-size: 32px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 25px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-color: #3a5fc8;
+      color: white;
+      padding: 70px 40px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h3 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      color: #1f3c88;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h4 {
+      margin-bottom: 10px;
+      color: #3a5fc8;
+    }
+
+    .announcement {
+      background-color: #ffffff;
+      border-left: 6px solid #3a5fc8;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+
+    footer {
+      background-color: #1f3c88;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-
-<ul id="sidebar">
-  <li onclick="showPage('home')">
-    <i>🏠</i><span>Home</span>
-  </li>
-  <li onclick="showPage('games')">
-    <i>🎮</i><span>School Games</span>
-  </li>
-</ul>
-
-<div id="main">
-  <div class="search-bar">
-    <select id="searchEngine">
-      <option value="https://www.google.com/search?q=">Google</option>
-      <option value="https://www.bing.com/search?q=">Bing</option>
-      <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
-    </select>
-    <input type="text" id="searchQuery" placeholder="Search...">
-    <button onclick="doSearch()">Search</button>
-  </div>
-
-  <h1>Welcome to EduWork, your #1 educational dashboard!</h1>
-  <div id="home">
-    <div class="card">
-      <h2>Calculator</h2>
-      <input type="text" id="calc-input" placeholder="e.g. 2+2">
-      <button class="main-btn" onclick="calculate()">Calculate</button>
-      <div id="calc-result"></div>
-    </div>
-    <div class="card">
-      <h2>Shortcuts</h2>
-      <input type="text" id="shortcut-input" placeholder="Enter URL">
-      <button class="main-btn" onclick="addShortcut()">Add</button>
-      <div id="shortcut-list"></div>
-    </div>
-    <div class="card" style="grid-column: span 2;">
-      <h2>Weather</h2>
-      <div class="tomorrow"
-           data-location-id=""
-           data-language="EN"
-           data-unit-system="IMPERIAL"
-           data-skin="dark"
-           data-widget-type="upcoming"
-           style="padding-bottom:22px;position:relative;">
-        <a href="https://www.tomorrow.io/weather-api/"
-           rel="nofollow noopener noreferrer"
-           target="_blank"
-           style="position:absolute; bottom:0; transform:translateX(-50%); left:50%;">
-          <img alt="Powered by the Tomorrow.io Weather API"
-               src="https://weather-website-client.tomorrow.io/img/powered-by.svg"
-               width="250" height="18"/>
-        </a>
+  <header>
+    <h1>Riverview Academy</h1>
+    <p>Excellence • Integrity • Community</p>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">Students</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h2>Preparing Students for a Brighter Future</h2>
+    <p>
+      Riverview Academy is a fictional private school dedicated to academic
+      excellence, character development, and lifelong learning.
+    </p>
+  </section>
+  <main class="container">
+    <section class="section">
+      <h3>About Our School</h3>
+      <div class="cards">
+        <div class="card">
+          <h4>Our Mission</h4>
+          <p>
+            To inspire students to achieve their full potential through
+            rigorous academics and strong community values.
+          </p>
+        </div>
+        <div class="card">
+          <h4>Our Vision</h4>
+          <p>
+            To be a leading educational institution that nurtures curiosity,
+            leadership, and responsibility.
+          </p>
+        </div>
+        <div class="card">
+          <h4>Our Values</h4>
+          <p>
+            Respect, responsibility, integrity, and a commitment to lifelong learning.
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+    <section class="section">
+      <h3>Academics</h3>
+      <div class="cards">
+        <div class="card">
+          <h4>English & Literature</h4>
+          <p>Critical reading, writing, and communication skills.</p>
+        </div>
+        <div class="card">
+          <h4>Mathematics</h4>
+          <p>From foundational math to advanced problem-solving.</p>
+        </div>
+        <div class="card">
+          <h4>Science</h4>
+          <p>Hands-on learning in biology, chemistry, and physics.</p>
+        </div>
+        <div class="card">
+          <h4>Technology</h4>
+          <p>Computer science, digital literacy, and innovation.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <h3>School Announcements</h3>
 
-  <div id="games">
-    <div class="card"><h2>Math Games</h2>
-      <a href="https://junilearning.com/blog/guide/best-free-math-games-for-kids/" target="_blank">Visit</a>
-    </div>
-    <div class="card"><h2>Literacy Games</h2>
-      <a href="https://www.educationworld.com/a_tech/archives/readingmachine.shtml" target="_blank">Visit</a>
-    </div>
-    <div class="card"><h2>Science Games</h2>
-      <a href="https://brittanywashburn.com/2020/12/10-science-online-game-collections-kids/" target="_blank">Visit</a>
-    </div>
-    <div class="card"><h2>Social Studies Games</h2>
-      <a href="https://iowa.pbslearningmedia.org/subjects/social-studies/elementary-social-studies/?rank_by=recency" target="_blank">Visit</a>
-    </div>
-  </div>
-</div>
+      <div class="announcement">
+        <strong>📅 Fall Semester Begins:</strong> September 5
+      </div>
 
-<script>
-function showPage(id){
-  document.getElementById('home').style.display = 'none';
-  document.getElementById('games').style.display = 'none';
-  document.getElementById(id).style.display = 'grid';
-}
-function doSearch(){
-  const engine = document.getElementById('searchEngine').value;
-  const query = encodeURIComponent(document.getElementById('searchQuery').value);
-  if(query) window.open(engine + query, '_blank');
-}
-function calculate(){
-  const input = document.getElementById('calc-input').value;
-  try {
-    document.getElementById('calc-result').innerText = eval(input);
-  } catch {
-    document.getElementById('calc-result').innerText = 'Error';
-  }
-}
-function addShortcut(){
-  const val = document.getElementById('shortcut-input').value.trim();
-  if(val){
-    const a = document.createElement('a');
-    a.href = val;
-    a.textContent = val;
-    a.target = "_blank";
-    document.getElementById('shortcut-list').appendChild(a);
-    document.getElementById('shortcut-input').value = '';
-  }
-}
-(function(d,s,id){
-  if(d.getElementById(id)){
-    if(window.__TOMORROW__) window.__TOMORROW__.renderWidget();
-    return;
-  }
-  const fjs=d.getElementsByTagName(s)[0];
-  const js=d.createElement(s);
-  js.id=id;
-  js.src="https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
-  fjs.parentNode.insertBefore(js,fjs);
-})(document,'script','tomorrow-sdk');
-</script>
+      <div class="announcement">
+        <strong>🎓 Open House:</strong> Campus tours available every Friday
+      </div>
 
-<script>
-(function () {
-  let count = 0;
-  const timeout = 1500;
-  let timer;
+      <div class="announcement">
+        <strong>📘 New Library Resources:</strong> Digital textbooks now available
+      </div>
+    </section>
 
-  function reset() {
-    count = 0;
-    clearTimeout(timer);
-  }
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'n' && !e.ctrlKey && !e.altKey && !e.metaKey) {
-      count++;
-      clearTimeout(timer);
-      timer = setTimeout(reset, timeout);
-      if (count >= 4) {
-        reset();
-        const popup = window.open('about:blank', '_blank');
-        if (popup) {
-          popup.document.write(
-            '<!DOCTYPE html><html><head><title>New Tab</title>' +
-            '<style>html,body{margin:0;padding:0;height:100%;}' +
-            'iframe{border:0;width:100%;height:100%;}</style></head>' +
-            '<body><iframe src="/main.html"></iframe></body></html>'
-          );
-          popup.document.close();
-        }
-      }
-    } else {
-      reset();
-    }
-  });
-})();
-</script>
+  </main>
+  <footer>
+    <p>2026 Riverview Academy | Join us today!</p>
+  </footer>
 </body>
+<script src="edu.js" defer></script>
 </html>
