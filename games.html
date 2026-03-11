@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NebuliOS Games</title>
+  <title>NebuliOS | Games</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -92,13 +92,19 @@
     <input type="text" id="search" placeholder="Search for a game...">
   </div>
 
-    <div class="games-section" id="suggest">
-  <div class="game">
-    <img src="https://agpartseducation.com/wp-content/uploads/2020/10/google-forms-hacks.png" alt="1">
-    <a href="https://forms.gle/VtryJUW3e5zqvru27">Suggest Games</a>
+  <div class="games-section" id="suggest">
+    <div class="game">
+      <img src="https://agpartseducation.com/wp-content/uploads/2020/10/google-forms-hacks.png" alt="Suggest">
+      <a href="https://forms.gle/VtryJUW3e5zqvru27">Suggest Games</a>
+    </div>
   </div>
-</div>
-  
+
+  <div id="recently-played-wrapper" style="display: none;">
+    <div class="divider"></div>
+    <h2>Recently Played</h2>
+    <div class="games-section" id="recently-played-section"></div>
+  </div>
+
     <div class="divider"></div>
   <h2>Ultimate Game Stash Games</h2>
   <div class="games-section" id="ugs-games">
@@ -1956,11 +1962,11 @@
   </div>
   <div class="game">
     <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="papascheeseria">
-    <a href="/g/clpapascheeseria.html">papascheeseria</a>
+    <a href="/g/clpapascheeseria.html">papascheeseria</a> 
   </div>
   <div class="game">
     <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="papascupcakeria">
-    <a href="/g/clpapascupcakeria.html">papascupcakeria</a>
+    <a href="/g/clpapascupcakeria.html">papascupcakeria</a> 
   </div>
   <div class="game">
     <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="papasfreezeria">
@@ -3158,20 +3164,70 @@
     <img src="https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg" alt="wheely7">
     <a href="/g/clwheely7.html">wheely7</a>
   </div>
-    </div>
-
+    </div> 
   <script>
     const search = document.getElementById('search');
-    const games = document.querySelectorAll('.game');
+    const recentWrapper = document.getElementById('recently-played-wrapper');
+    const recentSection = document.getElementById('recently-played-section');
+
+    function displayRecent() {
+      const recent = JSON.parse(localStorage.getItem('recentGames')) || [];
+      
+      if (recent.length === 0) {
+        recentWrapper.style.display = 'none';
+        return;
+      }
+
+      recentWrapper.style.display = 'block';
+      recentSection.innerHTML = ''; 
+
+      recent.forEach(game => {
+        const gameDiv = document.createElement('div');
+        gameDiv.className = 'game';
+        gameDiv.innerHTML = `
+          <img src="${game.img}" alt="${game.name}">
+          <a href="${game.link}">${game.name}</a>
+        `;
+        recentSection.appendChild(gameDiv);
+      });
+    }
+
+    function addToRecent(name, img, link) {
+      if (link.includes("forms.gle")) return;
+
+      let recent = JSON.parse(localStorage.getItem('recentGames')) || [];
+      recent = recent.filter(g => g.name !== name);
+      recent.unshift({ name, img, link });
+      if (recent.length > 8) recent.pop();
+
+      localStorage.setItem('recentGames', JSON.stringify(recent));
+      displayRecent();
+    }
 
     search.addEventListener('input', () => {
       const query = search.value.toLowerCase();
-      games.forEach(game => {
+      const allGames = document.querySelectorAll('.game');
+      allGames.forEach(game => {
         const name = game.querySelector('a').textContent.toLowerCase();
         game.style.display = name.includes(query) ? 'block' : 'none';
       });
     });
-  </script>
 
+    document.addEventListener('click', (e) => {
+      const gameContainer = e.target.closest('.game');
+      if (gameContainer) {
+        const linkEl = gameContainer.querySelector('a');
+        const imgEl = gameContainer.querySelector('img');
+        if (linkEl && imgEl) {
+          const name = linkEl.textContent.trim();
+          const img = imgEl.src;
+          const link = linkEl.getAttribute('href');
+          addToRecent(name, img, link);
+        }
+      }
+    });
+
+    displayRecent();
+  </script>
 </body>
 </html>
