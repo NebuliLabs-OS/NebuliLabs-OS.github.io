@@ -1,5 +1,5 @@
 (function() {
-    const userInput = prompt("Please type one of the following:\n'a' = about:blank\n'b' = blob cloaking\n'ac' = about:blank & tab anchor\n'bc' = blob cloaking & tab anchor");
+    const userInput = prompt("Please type one of the following:\n'a' = about:blank\n'b' = blob cloaking\n'm' = current tab iframe\n'ac' = about:blank & tab anchor\n'bc' = blob cloaking & anchor\n'mc' = current tab & tab anchor");
 
     if (!userInput) return;
 
@@ -50,13 +50,13 @@
     } else if (userInput === "b" || userInput === "bc") {
         const isBC = userInput === "bc";
         const blobContent = getIframeContent(isBC);
-        const blob = new Blob([blobContent], {
-            type: "text/html"
-        });
+        const blob = new Blob([blobContent], { type: "text/html" });
         const blobUrl = URL.createObjectURL(blob);
-        const newTab = window.open(blobUrl, "_blank");
-        if (!newTab) {
-            alert('Popup blocked! Please allow popups for this site, then reload the site.');
-        }
+        window.open(blobUrl, "_blank") || alert('Popup blocked!');
+    } else if (userInput === "m" || userInput === "mc") {
+        const isMC = userInput === "mc";
+        document.open();
+        document.write(getIframeContent(isMC));
+        document.close();
     }
 })();
