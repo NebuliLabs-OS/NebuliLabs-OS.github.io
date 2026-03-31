@@ -30,7 +30,7 @@ try {
 registerSW()
 	.then(async () => {
 
-		const connection = new BareMux.BareMuxConnection("/bareworker.js");
+		const connection = new BareMux.BareMuxConnection("/scramjet/bareworker.js");
 		const wispURL = "wss://anura.pro/";
 		await connection.setTransport("https://unpkg.com/@mercuryworkshop/epoxy-transport@2.1.27/dist/index.mjs", [{ wisp: wispURL }]);
 
